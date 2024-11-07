@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 const Color limeGreenColor = Color(0xFF55A630);
 const Color charcoalColor = Color(0xFF323232);
 const Color mediumGrayColor = Color(0xFF888888);
-const Color lightGrayColor = Color(0xFFCCCCCC);
+const Color lightGrayColor = Color(0xFFF7F7F7);
 const Color whiteColor = Color(0xFFFFFFFF);
 const Color silverGrayColor = Color(0xFFB3B3B3);
 const Color purpleColor = Color(0xFFB548C6);
@@ -14,6 +14,8 @@ const Color lightBlueColor = Color(0xFF84BAE7);
 const Color redColor = Color(0xFFFF0000);
 const Color blueColor = Color(0xFF0601B4);
 const Color offWhiteColor = Color(0xFFFAFAFA);
+const Color borderColor = Color(0xFFE2E2E2);
+const Color grayColor = Color(0xFF9D9D9D);
 
 FontWeight thin = FontWeight.w100;
 FontWeight extraLight = FontWeight.w200;
@@ -24,7 +26,8 @@ FontWeight semiBold = FontWeight.w600;
 FontWeight bold = FontWeight.w700;
 FontWeight extraBold = FontWeight.w800;
 
-TextStyle regularText14 = GoogleFonts.roboto(fontSize: 14, fontWeight: regular);
+TextStyle regularText14 =
+    GoogleFonts.roboto(fontSize: 14, fontWeight: regular, color: charcoalColor);
 TextStyle mediumText14 = GoogleFonts.roboto(
     fontSize: 14, fontWeight: medium, color: mediumGrayColor);
 TextStyle semiBoldText14 = GoogleFonts.roboto(

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_laundry/onboarding/onboarding_finish.dart';
+import 'package:go_laundry/router/slide_page_router.dart';
+import 'package:go_laundry/screen/auth/register-screen.dart';
 import 'package:go_laundry/themes.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/indicator_dot.dart';
@@ -43,7 +45,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           duration: Duration(milliseconds: 300), curve: Curves.ease);
     } else {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => OnboardingFinish()));
+        context,
+        SlidePageRoute(page: OnboardingFinish()),
+      );
     }
   }
 
@@ -92,8 +96,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   onPressed: () {
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => OnboardingFinish()),
+                      SlidePageRoute(page: OnboardingFinish()),
                     );
                   },
                   child: Text(

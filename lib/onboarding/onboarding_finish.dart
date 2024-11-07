@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_laundry/onboarding/onboarding_finish_content.dart';
+import 'package:go_laundry/router/slide_page_router.dart';
+import 'package:go_laundry/screen/auth/login-screen.dart';
+import 'package:go_laundry/screen/auth/register-screen.dart';
 import 'package:go_laundry/themes.dart';
 import '../widgets/custom_button.dart';
-
 
 class OnboardingFinish extends StatefulWidget {
   const OnboardingFinish({Key? key}) : super(key: key);
@@ -27,9 +29,9 @@ class _OnboardingFinishState extends State<OnboardingFinish> {
   void _nextPage() {
     if (_currentPage < onboardingData.length - 1) {
       _pageController.nextPage(
-          duration: Duration(milliseconds: 300), curve: Curves.ease);
+          duration: const Duration(milliseconds: 300), curve: Curves.ease);
     } else {
-      // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+      Navigator.of(context).push(SlidePageRoute(page: RegisterScreen()));
     }
   }
 
@@ -64,11 +66,14 @@ class _OnboardingFinishState extends State<OnboardingFinish> {
                   color: limeGreenColor,
                   onPressed: _nextPage,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context)
+                        .push(SlidePageRoute(page: LoginScreen()));
+                  },
                   child: Text(
                     'Masuk',
                     style: semiBoldText14.copyWith(color: limeGreenColor),
