@@ -4,15 +4,17 @@ import 'package:go_laundry/themes.dart';
 class CustomTextField extends StatelessWidget {
   final String title;
   final String hintText;
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final Icon? icon;
+  final bool obscureText;
 
   const CustomTextField({
     super.key,
     required this.title,
     required this.hintText,
-    required this.controller,
+    this.controller,
     this.icon,
+    this.obscureText = false,
   });
 
   @override
@@ -24,6 +26,7 @@ class CustomTextField extends StatelessWidget {
         const SizedBox(height: 2),
         TextField(
           controller: controller,
+          obscureText: obscureText,
           decoration: InputDecoration(
             hintText: hintText,
             hintStyle: regularText14.copyWith(color: silverGrayColor),

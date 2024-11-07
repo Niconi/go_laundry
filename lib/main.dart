@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_laundry/onboarding/onboarding_screen.dart';
+import 'package:go_laundry/screen/onboarding/onboarding_screen.dart';
 
 void main() {
   runApp(const MainApp());

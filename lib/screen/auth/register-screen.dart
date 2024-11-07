@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:go_laundry/router/slide_page_router.dart';
+import 'package:go_laundry/screen/auth/login-screen.dart';
 import 'package:go_laundry/themes.dart';
 import 'package:go_laundry/widgets/custom_button.dart';
 import 'package:go_laundry/widgets/custom_text_field.dart';
 import 'package:go_laundry/widgets/google_button.dart';
 
 class RegisterScreen extends StatelessWidget {
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+  final Map<String, TextEditingController> controllers = {
+    'namaLengkap': TextEditingController(),
+    'email': TextEditingController(),
+    'noHandphone': TextEditingController(),
+    'alamat': TextEditingController(),
+    'password': TextEditingController(),
+    'confirmPassword': TextEditingController(),
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -16,89 +24,114 @@ class RegisterScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: backgroundColor,
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: screenHeight * 0.1),
-            Text(
-              'Daftar Sekarang',
-              style: semiBoldText20,
-            ),
-            const SizedBox(height: 8),
-            Text(
-              'Masukkan data diri anda untuk menikmati fitur kami.',
-              style: regularText14.copyWith(color: mediumGrayColor),
-            ),
-            const SizedBox(height: 32),
-            CustomTextField(
-              title: 'Nama Lengkap',
-              hintText: 'Masukkan Nama',
-              controller: emailController,
-            ),
-            const SizedBox(height: 16),
-            CustomTextField(
-              title: 'Email',
-              hintText: 'Masukkan Email',
-              controller: passwordController,
-            ),
-            const SizedBox(height: 32),
-            CustomButton(
-              text: 'Masuk',
-              color: Colors.green,
-              onPressed: () {
-                // Action for login button
-              },
-            ),
-            const SizedBox(height: 24),
-            const Row(
+      body: GestureDetector(
+        onTap: () {
+          FocusScope.of(context).unfocus();
+        },
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(child: Divider(color: grayColor)),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8.0),
-                  child: Text(
-                    'atau',
-                    style: TextStyle(
-                      color: grayColor,
+                SizedBox(height: screenHeight * 0.1),
+                Text(
+                  'Daftar Sekarang',
+                  style: semiBoldText20,
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  'Masukkan data diri anda untuk menikmati fitur kami.',
+                  style: regularText14.copyWith(color: mediumGrayColor),
+                ),
+                const SizedBox(height: 32),
+                CustomTextField(
+                  title: 'Nama Lengkap',
+                  hintText: 'Masukkan Nama',
+                  controller: controllers['namaLengkap'],
+                ),
+                const SizedBox(height: 16),
+                CustomTextField(
+                  title: 'Email',
+                  hintText: 'Masukkan Email',
+                  controller: controllers['email'],
+                ),
+                const SizedBox(height: 16),
+                CustomTextField(
+                  title: 'No Handphone',
+                  hintText: 'Masukkan No Handphone',
+                  controller: controllers['noHandphone'],
+                ),
+                const SizedBox(height: 16),
+                CustomTextField(
+                  title: 'Alamat',
+                  hintText: 'Masukkan Alamat',
+                  controller: controllers['alamat'],
+                ),
+                const SizedBox(height: 16),
+                CustomTextField(
+                  title: 'Password',
+                  hintText: 'Masukkan Password',
+                  controller: controllers['password'],
+                  obscureText: true,
+                ),
+                const SizedBox(height: 16),
+                CustomTextField(
+                  title: 'Konfirmasi Password',
+                  hintText: 'Masukkan Konfirmasi Password',
+                  controller: controllers['confirmPassword'],
+                  obscureText: true,
+                ),
+                const SizedBox(height: 32),
+                CustomButton(
+                  text: 'Daftar',
+                  color: Colors.green,
+                  onPressed: () {},
+                ),
+                const SizedBox(height: 24),
+                const Row(
+                  children: [
+                    Expanded(child: Divider(color: grayColor)),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Text(
+                        'atau',
+                        style: TextStyle(color: grayColor),
+                      ),
                     ),
+                    Expanded(child: Divider(color: grayColor)),
+                  ],
+                ),
+                const SizedBox(height: 24),
+                GoogleSignInButton(
+                  onPressed: () {},
+                ),
+                SizedBox(height: screenHeight * 0.05),
+                Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Sudah punya Akun? ',
+                        style: semiBoldText14.copyWith(color: charcoalColor),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.of(context)
+                              .push(SlidePageRoute(page: LoginScreen()));
+                        },
+                        child: Text(
+                          'Masuk Sekarang',
+                          style: semiBoldText14.copyWith(color: limeGreenColor),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                Expanded(child: Divider(color: grayColor)),
+                SizedBox(height: screenHeight * 0.05),
               ],
             ),
-            const SizedBox(height: 24),
-            GoogleSignInButton(
-              onPressed: () {
-                // Action for Google sign-in button
-              },
-            ),
-            SizedBox(height: screenHeight * 0.05),
-            // Spacer to push content above
-            const Spacer(),
-            // "Belum punya akun? Daftar Sekarang" section
-            Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Sudah punya Akun? ',
-                    style: semiBoldText14.copyWith(color: charcoalColor),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      // Action for "Daftar Sekarang" link
-                    },
-                    child: Text(
-                      'Masuk Sekarang',
-                      style: semiBoldText14.copyWith(color: limeGreenColor),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: screenHeight * 0.05),
-          ],
+          ),
         ),
       ),
     );

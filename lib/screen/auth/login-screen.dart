@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_laundry/router/slide_page_router.dart';
+import 'package:go_laundry/screen/auth/register-screen.dart';
+import 'package:go_laundry/screen/home/home-screen.dart';
 import 'package:go_laundry/themes.dart';
 import 'package:go_laundry/widgets/custom_button.dart';
 import 'package:go_laundry/widgets/custom_text_field.dart';
@@ -55,7 +58,8 @@ class LoginScreen extends StatelessWidget {
                   text: 'Masuk',
                   color: Colors.green,
                   onPressed: () {
-                    // Action for login button
+                    Navigator.of(context)
+                        .push(SlidePageRoute(page: HomeScreen()));
                   },
                 ),
                 const SizedBox(height: 24),
@@ -88,7 +92,10 @@ class LoginScreen extends StatelessWidget {
                         style: semiBoldText14.copyWith(color: charcoalColor),
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.of(context)
+                              .push(SlidePageRoute(page: RegisterScreen()));
+                        },
                         child: Text(
                           'Daftar Sekarang',
                           style: semiBoldText14.copyWith(color: limeGreenColor),

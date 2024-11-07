@@ -7,6 +7,7 @@ class OnboardingFinishContent extends StatelessWidget {
   final String description;
 
   const OnboardingFinishContent({
+    super.key,
     required this.image,
     required this.title,
     required this.description,
@@ -27,8 +28,8 @@ class OnboardingFinishContent extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
           ),
-          SizedBox(height: 30),
-          Container(
+          const SizedBox(height: 30),
+          SizedBox(
             height: 60,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -39,7 +40,7 @@ class OnboardingFinishContent extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 40),
+          const SizedBox(height: 40),
           Image.asset(
             image,
             height: 295,
