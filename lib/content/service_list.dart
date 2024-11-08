@@ -12,6 +12,10 @@ class ServiceList extends StatelessWidget {
     ServiceModel(title: 'Cuci Karpet', image: 'assets/icons/karpet.png'),
   ];
 
+  final Function(String) onServiceSelected;
+
+  ServiceList({Key? key, required this.onServiceSelected}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
@@ -29,6 +33,8 @@ class ServiceList extends StatelessWidget {
         return ServiceBox(
           title: service.title,
           image: service.image,
+          onTap: () => onServiceSelected(
+              service.title), 
         );
       },
     );

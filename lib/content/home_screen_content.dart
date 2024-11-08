@@ -2,17 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:go_laundry/components/wallet.dart';
 import 'package:go_laundry/content/service_list.dart';
 import 'package:go_laundry/models/wallet_button_model.dart';
+import 'package:go_laundry/router/slide_page_router.dart';
+import 'package:go_laundry/screen/order/order_customization.dart';
 import 'package:go_laundry/themes.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomeScreenContent extends StatelessWidget {
   const HomeScreenContent({super.key});
 
+  void _navigateToOrderCustomization(BuildContext context, String serviceName) {
+    Navigator.of(context).push(
+      SlidePageRoute(
+        page: OrderCustomization(serviceName: serviceName),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -31,10 +41,11 @@ class HomeScreenContent extends StatelessWidget {
                     Text(
                       'Anda',
                       style: GoogleFonts.roboto(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          fontStyle: FontStyle.italic,
-                          color: charcoalColor),
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.italic,
+                        color: charcoalColor,
+                      ),
                     ),
                   ],
                 ),
@@ -81,8 +92,12 @@ class HomeScreenContent extends StatelessWidget {
               'Layanan Kami',
               style: boldText16,
             ),
-            Expanded(
-              child: ServiceList(),
+            SizedBox(
+              height: 400,
+              child: ServiceList(
+                onServiceSelected: (serviceName) =>
+                    _navigateToOrderCustomization(context, serviceName),
+              ),
             ),
           ],
         ),

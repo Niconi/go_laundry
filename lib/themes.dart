@@ -17,6 +17,7 @@ const Color offWhiteColor = Color(0xFFFAFAFA);
 const Color borderColor = Color(0xFFE2E2E2);
 const Color grayColor = Color(0xFF9D9D9D);
 const Color blackColor = Color(0xFF000000);
+const Color transparentColor = Color(0x00FFFFFF);
 
 FontWeight thin = FontWeight.w100;
 FontWeight extraLight = FontWeight.w200;
