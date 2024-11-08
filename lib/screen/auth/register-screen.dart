@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_laundry/router/slide_page_router.dart';
 import 'package:go_laundry/screen/auth/login-screen.dart';
+import 'package:go_laundry/screen/home/home-screen.dart';
 import 'package:go_laundry/themes.dart';
 import 'package:go_laundry/widgets/custom_button.dart';
 import 'package:go_laundry/widgets/custom_text_field.dart';
@@ -34,7 +35,7 @@ class RegisterScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: screenHeight * 0.1),
+                SizedBox(height: screenHeight * 0.08),
                 Text(
                   'Daftar Sekarang',
                   style: semiBoldText20,
@@ -49,44 +50,51 @@ class RegisterScreen extends StatelessWidget {
                   title: 'Nama Lengkap',
                   hintText: 'Masukkan Nama',
                   controller: controllers['namaLengkap'],
+                  inputType: TextInputType.text,
                 ),
                 const SizedBox(height: 16),
                 CustomTextField(
                   title: 'Email',
                   hintText: 'Masukkan Email',
                   controller: controllers['email'],
+                  inputType: TextInputType.emailAddress,
                 ),
                 const SizedBox(height: 16),
                 CustomTextField(
                   title: 'No Handphone',
-                  hintText: 'Masukkan No Handphone',
+                  hintText: '+62 | 123 456 789',
                   controller: controllers['noHandphone'],
+                  inputType: TextInputType.phone,
                 ),
                 const SizedBox(height: 16),
                 CustomTextField(
                   title: 'Alamat',
-                  hintText: 'Masukkan Alamat',
+                  hintText: 'Masukkan Alamat Rumah / Kantor',
                   controller: controllers['alamat'],
+                  inputType: TextInputType.text,
                 ),
                 const SizedBox(height: 16),
                 CustomTextField(
                   title: 'Password',
-                  hintText: 'Masukkan Password',
+                  hintText: 'Password harus dalam 8 Karakter',
                   controller: controllers['password'],
                   obscureText: true,
                 ),
                 const SizedBox(height: 16),
                 CustomTextField(
                   title: 'Konfirmasi Password',
-                  hintText: 'Masukkan Konfirmasi Password',
+                  hintText: 'Tulis ulang password Anda',
                   controller: controllers['confirmPassword'],
                   obscureText: true,
                 ),
                 const SizedBox(height: 32),
                 CustomButton(
                   text: 'Daftar',
-                  color: Colors.green,
-                  onPressed: () {},
+                  color: limeGreenColor,
+                  onPressed: () {
+                    Navigator.of(context)
+                        .push(SlidePageRoute(page: const HomeScreen()));
+                  },
                 ),
                 const SizedBox(height: 24),
                 const Row(

@@ -16,6 +16,7 @@ const Color blueColor = Color(0xFF0601B4);
 const Color offWhiteColor = Color(0xFFFAFAFA);
 const Color borderColor = Color(0xFFE2E2E2);
 const Color grayColor = Color(0xFF9D9D9D);
+const Color blackColor = Color(0xFF000000);
 
 FontWeight thin = FontWeight.w100;
 FontWeight extraLight = FontWeight.w200;
@@ -34,5 +35,9 @@ TextStyle semiBoldText14 = GoogleFonts.roboto(
     fontSize: 14, fontWeight: semiBold, color: offWhiteColor);
 TextStyle semiBoldText20 = GoogleFonts.roboto(
     fontSize: 20, fontWeight: semiBold, color: charcoalColor);
+TextStyle boldText14 =
+    GoogleFonts.roboto(fontSize: 14, fontWeight: bold, color: blackColor);
+TextStyle boldText16 =
+    GoogleFonts.roboto(fontSize: 16, fontWeight: bold, color: blackColor);
 TextStyle boldText28 =
     GoogleFonts.roboto(fontSize: 28, fontWeight: bold, color: charcoalColor);

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_laundry/content/home_screen_content.dart';
+import 'package:go_laundry/themes.dart';
 import 'package:go_laundry/widgets/bottom_nav_bar.dart';
 import 'package:go_laundry/screen/order/order_screen.dart';
 import 'package:go_laundry/screen/settings/settings_screen.dart';
@@ -29,6 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: backgroundColor,
       body: _screens[_currentIndex],
       bottomNavigationBar: CustomBottomNavBar(
         currentIndex: _currentIndex,

@@ -38,7 +38,7 @@ class _OnboardingFinishState extends State<OnboardingFinish> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: whiteColor,
       body: Column(
         children: [
           Expanded(

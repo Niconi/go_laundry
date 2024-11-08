@@ -27,27 +27,33 @@ class CustomBottomNavBar extends StatelessWidget {
           ),
         ],
       ),
-      child: BottomNavigationBar(
-        currentIndex: currentIndex,
-        onTap: onTap,
-        selectedItemColor: activeColor,
-        unselectedItemColor: inactiveColor,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.receipt_long_outlined),
-            label: 'Orders',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
-          ),
-        ],
+      child: Theme(
+        data: Theme.of(context).copyWith(
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+        ),
+        child: BottomNavigationBar(
+          currentIndex: currentIndex,
+          onTap: onTap,
+          selectedItemColor: activeColor,
+          unselectedItemColor: inactiveColor,
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.receipt_long_outlined),
+              label: 'Orders',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.settings),
+              label: 'Settings',
+            ),
+          ],
+        ),
       ),
     );
   }
