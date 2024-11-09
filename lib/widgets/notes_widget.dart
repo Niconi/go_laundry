@@ -40,19 +40,22 @@ class NotesWidget extends StatelessWidget {
           const Divider(
             thickness: 1,
             color: grayColor,
-            indent: 0,
-            endIndent: 0,
             height: 1,
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 10, top: 6),
+            padding: const EdgeInsets.fromLTRB(12, 0, 12, 12),
             child: TextField(
               maxLines: null,
               decoration: InputDecoration(
-                contentPadding: const EdgeInsets.only(top: -20, left: 4),
+                contentPadding: const EdgeInsets.all(12),
                 hintText: 'Masukkan detail catatan pencucian pakaian anda.',
                 hintStyle: regularText14.copyWith(color: grayColor),
-                border: InputBorder.none,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                  borderSide: BorderSide.none,
+                ),
+                filled: true,
+                fillColor: whiteColor,
               ),
             ),
           ),

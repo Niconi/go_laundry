@@ -11,6 +11,8 @@ class LoginScreen extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
+  LoginScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
@@ -21,7 +23,7 @@ class LoginScreen extends StatelessWidget {
       backgroundColor: backgroundColor,
       body: GestureDetector(
         onTap: () {
-          FocusScope.of(context).unfocus(); // Hide keyboard on tap outside
+          FocusScope.of(context).unfocus();
         },
         child: SingleChildScrollView(
           child: ConstrainedBox(

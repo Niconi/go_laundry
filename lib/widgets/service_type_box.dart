@@ -18,7 +18,8 @@ class _ServiceTypeBoxState extends State<ServiceTypeBox> {
   late ServiceOption _serviceOption;
   late Map<String, bool> _selectedOptions;
   final ScrollController _scrollController = ScrollController();
-  final TextEditingController _kgController = TextEditingController();
+  final TextEditingController _kgController =
+      TextEditingController(text: '1.0');
   final FocusNode _kgFocusNode = FocusNode();
 
   @override
@@ -33,6 +34,24 @@ class _ServiceTypeBoxState extends State<ServiceTypeBox> {
     _selectedOptions = {
       for (var option in _serviceOption.options) option: false
     };
+  }
+
+  void _incrementWeight() {
+    double currentValue = double.tryParse(_kgController.text) ?? 1;
+    setState(() {
+      currentValue += 1;
+      _kgController.text = currentValue.toStringAsFixed(1);
+    });
+  }
+
+  void _decrementWeight() {
+    double currentValue = double.tryParse(_kgController.text) ?? 1;
+    if (currentValue > 1) {
+      setState(() {
+        currentValue -= 1;
+        _kgController.text = currentValue.toStringAsFixed(1);
+      });
+    }
   }
 
   @override
@@ -130,21 +149,35 @@ class _ServiceTypeBoxState extends State<ServiceTypeBox> {
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: TextField(
-                  controller: _kgController,
-                  focusNode: _kgFocusNode,
-                  decoration: InputDecoration(
-                    hintText: 'Masukkan estimasi berat (kg)',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      borderSide:
-                          const BorderSide(color: Colors.grey, width: 0.5),
+                child: Row(
+                  children: [
+                    IconButton(
+                      onPressed: _decrementWeight,
+                      icon: Icon(Icons.remove),
                     ),
-                    contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 16, vertical: 10),
-                  ),
-                  keyboardType:
-                      const TextInputType.numberWithOptions(decimal: true),
+                    Expanded(
+                      child: TextField(
+                        controller: _kgController,
+                        focusNode: _kgFocusNode,
+                        decoration: InputDecoration(
+                          hintText: 'Masukkan estimasi berat (kg)',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8),
+                            borderSide: const BorderSide(
+                                color: Colors.grey, width: 0.5),
+                          ),
+                          contentPadding: const EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 10),
+                        ),
+                        keyboardType: const TextInputType.numberWithOptions(
+                            decimal: true),
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: _incrementWeight,
+                      icon: Icon(Icons.add),
+                    ),
+                  ],
                 ),
               ),
             ],
