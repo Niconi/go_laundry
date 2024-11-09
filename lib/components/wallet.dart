@@ -9,11 +9,11 @@ class Wallet extends StatelessWidget {
   final List<WalletButtonModel> buttons;
 
   const Wallet({
-    Key? key,
+    super.key,
     required this.balance,
     required this.walletIconPath,
     required this.buttons,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

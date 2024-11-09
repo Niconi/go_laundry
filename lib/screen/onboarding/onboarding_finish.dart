@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_laundry/models/onboarding_finish_content.dart';
 import 'package:go_laundry/router/slide_page_router.dart';
-import 'package:go_laundry/screen/auth/login-screen.dart';
-import 'package:go_laundry/screen/auth/register-screen.dart';
+import 'package:go_laundry/screen/auth/login_screen.dart';
+import 'package:go_laundry/screen/auth/register_screen.dart';
 import 'package:go_laundry/themes.dart';
 import '../../widgets/custom_button.dart';
 

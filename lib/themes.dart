@@ -28,10 +28,20 @@ FontWeight semiBold = FontWeight.w600;
 FontWeight bold = FontWeight.w700;
 FontWeight extraBold = FontWeight.w800;
 
+TextStyle regularText12 =
+    GoogleFonts.roboto(fontSize: 12, fontWeight: regular, color: charcoalColor);
+TextStyle regularText8 =
+    GoogleFonts.roboto(fontSize: 8, fontWeight: regular, color: charcoalColor);
 TextStyle regularText14 =
     GoogleFonts.roboto(fontSize: 14, fontWeight: regular, color: charcoalColor);
+TextStyle regularText20 =
+    GoogleFonts.roboto(fontSize: 20, fontWeight: regular, color: blackColor);
+TextStyle regularText24 =
+    GoogleFonts.roboto(fontSize: 24, fontWeight: regular, color: blackColor);
 TextStyle mediumText14 = GoogleFonts.roboto(
     fontSize: 14, fontWeight: medium, color: mediumGrayColor);
+TextStyle semiBoldText12 = GoogleFonts.roboto(
+    fontSize: 12, fontWeight: semiBold, color: charcoalColor);
 TextStyle semiBoldText14 = GoogleFonts.roboto(
     fontSize: 14, fontWeight: semiBold, color: offWhiteColor);
 TextStyle semiBoldText20 = GoogleFonts.roboto(

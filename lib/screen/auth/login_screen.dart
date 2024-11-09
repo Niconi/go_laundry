@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_laundry/router/slide_page_router.dart';
-import 'package:go_laundry/screen/auth/register-screen.dart';
-import 'package:go_laundry/screen/home/home-screen.dart';
+import 'package:go_laundry/screen/auth/register_screen.dart';
+import 'package:go_laundry/screen/home/home_screen.dart';
 import 'package:go_laundry/themes.dart';
 import 'package:go_laundry/widgets/custom_button.dart';
 import 'package:go_laundry/widgets/custom_text_field.dart';

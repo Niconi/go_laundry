@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_laundry/router/slide_page_router.dart';
-import 'package:go_laundry/screen/auth/login-screen.dart';
-import 'package:go_laundry/screen/home/home-screen.dart';
+import 'package:go_laundry/screen/auth/login_screen.dart';
+import 'package:go_laundry/screen/home/home_screen.dart';
 import 'package:go_laundry/themes.dart';
 import 'package:go_laundry/widgets/custom_button.dart';
 import 'package:go_laundry/widgets/custom_text_field.dart';
@@ -16,6 +16,8 @@ class RegisterScreen extends StatelessWidget {
     'password': TextEditingController(),
     'confirmPassword': TextEditingController(),
   };
+
+  RegisterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

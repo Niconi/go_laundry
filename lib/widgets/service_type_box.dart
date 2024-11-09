@@ -91,6 +91,7 @@ class _ServiceTypeBoxState extends State<ServiceTypeBox> {
               SizedBox(
                 height: 200,
                 child: Scrollbar(
+                  trackVisibility: false,
                   thumbVisibility: true,
                   controller: _scrollController,
                   child: ListView.separated(

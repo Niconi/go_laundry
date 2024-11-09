@@ -14,7 +14,7 @@ class ServiceList extends StatelessWidget {
 
   final Function(String) onServiceSelected;
 
-  ServiceList({Key? key, required this.onServiceSelected}) : super(key: key);
+  ServiceList({super.key, required this.onServiceSelected});
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +33,7 @@ class ServiceList extends StatelessWidget {
         return ServiceBox(
           title: service.title,
           image: service.image,
-          onTap: () => onServiceSelected(
-              service.title), 
+          onTap: () => onServiceSelected(service.title),
         );
       },
     );
