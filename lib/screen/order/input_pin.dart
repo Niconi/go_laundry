@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:go_laundry/router/slide_page_router.dart';
+import 'package:go_laundry/screen/order/receipt_screen.dart';
 import 'package:go_laundry/themes.dart';
 import 'package:go_laundry/widgets/pin_pad.dart';
 
 class InputPin extends StatefulWidget {
+  const InputPin({super.key});
+
   @override
   _InputPinState createState() => _InputPinState();
 }
@@ -16,6 +20,13 @@ class _InputPinState extends State<InputPin> {
       setState(() {
         _currentPin += number;
       });
+      // Check if PIN is complete
+      if (_currentPin.length == _pinLength) {
+        Navigator.push(
+          context,
+          SlidePageRoute(page: const ReceiptScreen()),
+        );
+      }
     }
   }
 

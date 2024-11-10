@@ -6,10 +6,10 @@ class CustomBottomNavBar extends StatelessWidget {
   final void Function(int) onTap;
 
   const CustomBottomNavBar({
-    Key? key,
+    super.key,
     required this.currentIndex,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   final Color activeColor = charcoalColor;
   final Color inactiveColor = grayColor;
@@ -23,7 +23,7 @@ class CustomBottomNavBar extends StatelessWidget {
           BoxShadow(
             color: Colors.black.withOpacity(0.1),
             blurRadius: 10,
-            offset: Offset(0, -2),
+            offset: const Offset(0, -2),
           ),
         ],
       ),

@@ -6,7 +6,7 @@ class OrderScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: backgroundColor,
       body: Center(
         child: Text('Order Screen'),

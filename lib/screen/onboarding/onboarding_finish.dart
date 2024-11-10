@@ -7,7 +7,7 @@ import 'package:go_laundry/themes.dart';
 import '../../widgets/custom_button.dart';
 
 class OnboardingFinish extends StatefulWidget {
-  const OnboardingFinish({Key? key}) : super(key: key);
+  const OnboardingFinish({super.key});
 
   @override
   _OnboardingFinishState createState() => _OnboardingFinishState();

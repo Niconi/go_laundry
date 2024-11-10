@@ -5,7 +5,7 @@ import 'package:go_laundry/themes.dart';
 class ServiceTypeBox extends StatefulWidget {
   final String serviceName;
 
-  ServiceTypeBox({
+  const ServiceTypeBox({
     super.key,
     required this.serviceName,
   });
@@ -154,7 +154,7 @@ class _ServiceTypeBoxState extends State<ServiceTypeBox> {
                   children: [
                     IconButton(
                       onPressed: _decrementWeight,
-                      icon: Icon(Icons.remove),
+                      icon: const Icon(Icons.remove),
                     ),
                     Expanded(
                       child: TextField(
@@ -176,7 +176,7 @@ class _ServiceTypeBoxState extends State<ServiceTypeBox> {
                     ),
                     IconButton(
                       onPressed: _incrementWeight,
-                      icon: Icon(Icons.add),
+                      icon: const Icon(Icons.add),
                     ),
                   ],
                 ),

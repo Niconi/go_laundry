@@ -25,7 +25,7 @@ class OnboardingContent extends StatelessWidget {
             height: 295,
             width: 295,
           ),
-          SizedBox(height: 40),
+          const SizedBox(height: 40),
           Container(
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: Text(
@@ -34,8 +34,8 @@ class OnboardingContent extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
           ),
-          SizedBox(height: 30),
-          Container(
+          const SizedBox(height: 30),
+          SizedBox(
             height: 60,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),

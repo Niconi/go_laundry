@@ -6,10 +6,10 @@ class WalletButton extends StatelessWidget {
   final String iconPath;
 
   const WalletButton({
-    Key? key,
+    super.key,
     required this.title,
     required this.iconPath,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

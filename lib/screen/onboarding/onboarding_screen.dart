@@ -7,7 +7,7 @@ import '../../widgets/indicator_dot.dart';
 import 'onboarding_content.dart';
 
 class OnboardingScreen extends StatefulWidget {
-  const OnboardingScreen({Key? key}) : super(key: key);
+  const OnboardingScreen({super.key});
 
   @override
   _OnboardingScreenState createState() => _OnboardingScreenState();
@@ -41,11 +41,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   void _nextPage() {
     if (_currentPage < onboardingData.length - 1) {
       _pageController.nextPage(
-          duration: Duration(milliseconds: 300), curve: Curves.ease);
+          duration: const Duration(milliseconds: 300), curve: Curves.ease);
     } else {
       Navigator.pushReplacement(
         context,
-        SlidePageRoute(page: OnboardingFinish()),
+        SlidePageRoute(page: const OnboardingFinish()),
       );
     }
   }
@@ -88,14 +88,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   color: limeGreenColor,
                   onPressed: _nextPage,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 TextButton(
                   onPressed: () {
                     Navigator.pushReplacement(
                       context,
-                      SlidePageRoute(page: OnboardingFinish()),
+                      SlidePageRoute(page: const OnboardingFinish()),
                     );
                   },
                   child: Text(
