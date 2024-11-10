@@ -24,7 +24,7 @@ class _InputPinState extends State<InputPin> {
       if (_currentPin.length == _pinLength) {
         Navigator.push(
           context,
-          SlidePageRoute(page: const ReceiptScreen()),
+          SlidePageRoute(page: ReceiptScreen()),
         );
       }
     }

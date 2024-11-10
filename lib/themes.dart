@@ -38,6 +38,8 @@ TextStyle regularText20 =
     GoogleFonts.roboto(fontSize: 20, fontWeight: regular, color: blackColor);
 TextStyle regularText24 =
     GoogleFonts.roboto(fontSize: 24, fontWeight: regular, color: blackColor);
+TextStyle mediumText12 = GoogleFonts.roboto(
+    fontSize: 12, fontWeight: medium, color: blackColor);
 TextStyle mediumText14 = GoogleFonts.roboto(
     fontSize: 14, fontWeight: medium, color: mediumGrayColor);
 TextStyle semiBoldText12 = GoogleFonts.roboto(
