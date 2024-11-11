@@ -54,3 +54,5 @@ TextStyle boldText16 =
     GoogleFonts.roboto(fontSize: 16, fontWeight: bold, color: blackColor);
 TextStyle boldText28 =
     GoogleFonts.roboto(fontSize: 28, fontWeight: bold, color: charcoalColor);
+TextStyle boldText32 =
+    GoogleFonts.roboto(fontSize: 32, fontWeight: bold, color: blackColor);

@@ -1,18 +1,14 @@
-// lib/screens/receipt_screen.dart
-
 import 'package:flutter/material.dart';
 import 'package:go_laundry/models/receipt_model.dart';
 import 'package:go_laundry/widgets/receipt_card.dart';
 
 class ReceiptScreen extends StatelessWidget {
-  final ReceiptModel? receipt; // Buat nullable
+  final ReceiptModel? receipt;
 
-  const ReceiptScreen({Key? key, this.receipt})
-      : super(key: key); // Hapus required
+  const ReceiptScreen({Key? key, this.receipt}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // Buat receipt default jika null
     final ReceiptModel receiptData = receipt ??
         ReceiptModel(
           totalPayment: 10000.00,

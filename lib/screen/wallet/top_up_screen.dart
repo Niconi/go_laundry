@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_laundry/appbar.dart';
 
 class TopUpScreen extends StatelessWidget {
   const TopUpScreen({super.key});
@@ -6,9 +7,7 @@ class TopUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Top Up'),
-        ),
+        appBar: CustomAppBar(title: 'Top Up'),
         body: Center(
           child: ElevatedButton(
             onPressed: () {},
