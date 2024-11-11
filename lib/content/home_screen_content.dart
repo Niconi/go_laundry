@@ -3,7 +3,10 @@ import 'package:go_laundry/components/wallet.dart';
 import 'package:go_laundry/content/service_list.dart';
 import 'package:go_laundry/models/wallet_button_model.dart';
 import 'package:go_laundry/router/slide_page_router.dart';
+import 'package:go_laundry/screen/notification/notification_screen.dart';
 import 'package:go_laundry/screen/order/order_customization.dart';
+import 'package:go_laundry/screen/wallet/top_up_screen.dart';
+import 'package:go_laundry/screen/wallet/transaction_screen.dart';
 import 'package:go_laundry/themes.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -14,6 +17,22 @@ class HomeScreenContent extends StatelessWidget {
     Navigator.of(context).push(
       SlidePageRoute(
         page: OrderCustomization(serviceName: serviceName),
+      ),
+    );
+  }
+
+  void _navigateToTransactionScreen(BuildContext context) {
+    Navigator.of(context).push(
+      SlidePageRoute(
+        page: const TransactionScreen(),
+      ),
+    );
+  }
+
+  void _navigateToTopUpScreen(BuildContext context) {
+    Navigator.of(context).push(
+      SlidePageRoute(
+        page: const TopUpScreen(),
       ),
     );
   }
@@ -50,25 +69,17 @@ class HomeScreenContent extends StatelessWidget {
                   ],
                 ),
                 IconButton(
-                  icon: Stack(
+                  icon: const Stack(
                     children: [
-                      const Icon(Icons.notifications,
-                          size: 28, color: Colors.grey),
-                      Positioned(
-                        top: 2,
-                        right: 2,
-                        child: Container(
-                          width: 8,
-                          height: 8,
-                          decoration: const BoxDecoration(
-                            color: redColor,
-                            shape: BoxShape.circle,
-                          ),
-                        ),
-                      ),
+                      Icon(Icons.notifications, size: 28, color: grayColor),
                     ],
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      SlidePageRoute(page: NotificationScreen()),
+                    );
+                  },
                 ),
               ],
             ),
@@ -80,10 +91,16 @@ class HomeScreenContent extends StatelessWidget {
                 WalletButtonModel(
                   title: 'Top Up',
                   iconPath: 'assets/icons/plus.png',
+                  onTap: () {
+                    _navigateToTopUpScreen(context);
+                  },
                 ),
                 WalletButtonModel(
                   title: 'History',
                   iconPath: 'assets/icons/history.png',
+                  onTap: () {
+                    _navigateToTransactionScreen(context);
+                  },
                 ),
               ],
             ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_laundry/models/wallet_button_model.dart';
+import 'package:go_laundry/router/slide_page_router.dart';
+import 'package:go_laundry/screen/wallet/transaction_screen.dart';
 import 'package:go_laundry/themes.dart';
 import 'package:go_laundry/widgets/wallet_button.dart';
 
@@ -34,49 +36,61 @@ class Wallet extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(
-            children: [
-              Container(
-                width: 50,
-                height: 50,
-                decoration: BoxDecoration(
-                  color: limeGreenColor,
-                  borderRadius: BorderRadius.circular(12),
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(
+                SlidePageRoute(
+                  page: const TransactionScreen(),
                 ),
-                child: Center(
-                  child: Image.asset(
-                    walletIconPath,
-                    width: 30,
-                    height: 30,
-                    color: whiteColor,
+              );
+            },
+            child: Row(
+              children: [
+                Container(
+                  width: 50,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    color: limeGreenColor,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Center(
+                    child: Image.asset(
+                      walletIconPath,
+                      width: 30,
+                      height: 30,
+                      color: whiteColor,
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(width: 12),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Tabungan',
-                    style: boldText14,
-                  ),
-                  Text(
-                    balance,
-                    style: boldText14,
-                  ),
-                ],
-              ),
-            ],
+                const SizedBox(width: 12),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Tabungan',
+                      style: boldText14,
+                    ),
+                    Text(
+                      balance,
+                      style: boldText14,
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
           Row(
             children: buttons
-                .map((button) => Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: WalletButton(
-                        title: button.title,
-                        iconPath: button.iconPath,
-                      ),
-                    ))
+                .map(
+                  (button) => Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: WalletButton(
+                      title: button.title,
+                      iconPath: button.iconPath,
+                      onTap: button.onTap,
+                    ),
+                  ),
+                )
                 .toList(),
           ),
         ],
