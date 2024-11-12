@@ -96,7 +96,7 @@ class _ServiceTypeBoxState extends State<ServiceTypeBox> {
                   controller: _scrollController,
                   child: ListView.separated(
                     controller: _scrollController,
-                    physics: const AlwaysScrollableScrollPhysics(),
+                    physics: const BouncingScrollPhysics(),
                     itemCount: _serviceOption.options.length,
                     itemBuilder: (context, index) {
                       final option = _serviceOption.options[index];

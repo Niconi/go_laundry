@@ -9,7 +9,6 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 class TransactionScreen extends StatelessWidget {
   const TransactionScreen({Key? key}) : super(key: key);
 
-  // Sample data initialization
   TransactionModel get transactionData => TransactionModel(
         balance: 3000000,
         transactions: [
@@ -21,13 +20,13 @@ class TransactionScreen extends StatelessWidget {
           ),
           TransactionItem(
             date: DateTime(2024, 10, 28),
-            serviceIcon: 'assets/icons/kering.png',
+            serviceIcon: 'assets/icons/setrika.png',
             serviceChoice: 'CUCI SETRIKA 5 KG',
             amount: 50000,
           ),
           TransactionItem(
             date: DateTime(2024, 11, 2),
-            serviceIcon: 'assets/icons/kering.png',
+            serviceIcon: 'assets/icons/sepatu.png',
             serviceChoice: 'CUCI SEPATU 5 KG',
             amount: 90000,
           ),
@@ -54,7 +53,6 @@ class TransactionScreen extends StatelessWidget {
               maxHeight: height - panelMinHeight,
             ),
           ),
-          // Sliding Panel
           SlidingUpPanel(
             minHeight: panelMinHeight,
             maxHeight: panelMaxHeight,
@@ -99,7 +97,7 @@ class TransactionScreen extends StatelessWidget {
                 ],
               ),
             ),
-            body: const SizedBox.shrink(), // Empty body since we're using Stack
+            body: const SizedBox.shrink(),
           ),
         ],
       ),

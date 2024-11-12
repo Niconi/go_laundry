@@ -4,7 +4,6 @@ import 'package:go_laundry/screen/home/home_screen.dart';
 import 'package:go_laundry/themes.dart';
 import 'package:go_laundry/widgets/custom_button.dart';
 import '../../models/receipt_model.dart';
-import 'close_button_widget.dart';
 import 'receipt_header.dart';
 import 'receipt_details_section.dart';
 import 'dashed_divider.dart';
@@ -12,7 +11,7 @@ import 'dashed_divider.dart';
 class ReceiptCard extends StatelessWidget {
   final ReceiptModel receipt;
 
-  const ReceiptCard({Key? key, required this.receipt}) : super(key: key);
+  const ReceiptCard({super.key, required this.receipt});
 
   @override
   Widget build(BuildContext context) {

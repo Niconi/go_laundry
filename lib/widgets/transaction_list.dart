@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_laundry/themes.dart';
 import '../models/transaction_model.dart';
-import 'package:intl/intl.dart'; // Tambahkan package intl untuk format tanggal
 
 class TransactionList extends StatelessWidget {
   final List<TransactionItem> transactions;
@@ -10,7 +9,6 @@ class TransactionList extends StatelessWidget {
       : super(key: key);
 
   String _formatDate(DateTime date) {
-    // Format tanggal menjadi "15 Oktober 2024"
     final months = [
       'Januari',
       'Februari',
@@ -37,11 +35,9 @@ class TransactionList extends StatelessWidget {
       itemCount: transactions.length,
       itemBuilder: (context, index) {
         final transaction = transactions[index];
-
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Divider di awal item baru
             if (index == 0 ||
                 transactions[index].date != transactions[index - 1].date)
               Padding(
@@ -68,7 +64,6 @@ class TransactionList extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               child: Row(
                 children: [
-                  // Leading Image
                   Container(
                     width: 40,
                     height: 40,
@@ -81,14 +76,12 @@ class TransactionList extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 12),
-                  // Title
                   Expanded(
                     child: Text(
                       transaction.serviceChoice,
                       style: regularText12,
                     ),
                   ),
-                  // Price
                   Text(
                     'Rp ${transaction.amount.toStringAsFixed(0)}',
                     style: mediumText12.copyWith(color: Colors.black),

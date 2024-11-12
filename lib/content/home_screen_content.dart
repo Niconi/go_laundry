@@ -42,6 +42,7 @@ class HomeScreenContent extends StatelessWidget {
     return Scaffold(
       backgroundColor: backgroundColor,
       body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

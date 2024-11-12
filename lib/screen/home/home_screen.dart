@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_laundry/content/home_screen_content.dart';
+import 'package:go_laundry/content/order_screen_content.dart';
 import 'package:go_laundry/themes.dart';
 import 'package:go_laundry/widgets/bottom_nav_bar.dart';
 import 'package:go_laundry/screen/order/order_screen.dart';
@@ -17,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final List<Widget> _screens = [
     const HomeScreenContent(),
-    const OrderScreen(),
+    const OrderScreenContent(),
     const SettingsScreen(),
   ];
 
