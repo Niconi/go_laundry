@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_laundry/models/order.dart';
 import 'package:go_laundry/models/service_type.dart';
+import 'package:go_laundry/themes.dart';
 import 'package:go_laundry/widgets/detail_button.dart';
 import 'package:intl/intl.dart';
 
@@ -33,41 +34,22 @@ class OrderListItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      order.serviceType == ServiceType.cuciLipat
-                          ? 'Cuci Lipat'
-                          : 'Cuci Setrika',
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      'Rp ${order.price.toStringAsFixed(0)}',
-                      style: const TextStyle(
-                        fontSize: 14,
-                        color: Colors.grey,
-                      ),
-                    ),
-                    Text(
-                      DateFormat('dd MMM, HH:mm').format(order.date),
-                      style: const TextStyle(
-                        fontSize: 12,
-                        color: Colors.grey,
-                      ),
-                    ),
+                        order.serviceType == ServiceType.cuciLipat
+                            ? 'Cuci Lipat'
+                            : 'Cuci Setrika',
+                        style: boldText16.copyWith(color: blackColor)),
+                    Text('Rp ${order.price.toStringAsFixed(0)}',
+                        style: regularText14.copyWith(color: grayColor)),
+                    Text(DateFormat('dd MMM, HH:mm').format(order.date),
+                        style: mediumText12.copyWith(color: grayColor)),
                   ],
                 ),
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Text(
-                    '#${order.id}',
-                    style: const TextStyle(
-                      color: Colors.grey,
-                      fontSize: 12,
-                    ),
-                  ),
+                  Text('#${order.id}',
+                      style: regularText14.copyWith(color: grayColor)),
                   const SizedBox(height: 8),
                   DetailButton(onPressed: onDetailPressed),
                 ],

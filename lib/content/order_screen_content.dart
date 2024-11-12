@@ -51,19 +51,11 @@ class _OrderScreenContentState extends State<OrderScreenContent>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:
-          backgroundColor, // Menambahkan background color untuk seluruh screen
+      backgroundColor: backgroundColor,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         centerTitle: true,
-        title: const Text(
-          'Order History',
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.w600,
-            color: Colors.black,
-          ),
-        ),
+        title: Text('Pesanan Saya', style: boldText16),
         backgroundColor: backgroundColor,
         elevation: 0,
         bottom: TabBar(
@@ -84,8 +76,8 @@ class _OrderScreenContentState extends State<OrderScreenContent>
           labelColor: limeGreenColor,
           unselectedLabelColor: grayColor,
           indicatorColor: limeGreenColor,
-          indicatorSize: TabBarIndicatorSize.tab,
-          indicator: UnderlineTabIndicator(
+          indicatorSize: TabBarIndicatorSize.label,
+          indicator: const UnderlineTabIndicator(
               borderSide: BorderSide(color: limeGreenColor, width: 2)),
         ),
       ),
