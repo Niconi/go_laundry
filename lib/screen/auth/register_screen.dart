@@ -1,6 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:go_laundry/router/slide_page_router.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:go_laundry/config/api_config.dart';
 import 'package:go_laundry/screen/auth/login_screen.dart';
 import 'package:go_laundry/screen/home/home_screen.dart';
 import 'package:go_laundry/themes.dart';
@@ -8,6 +9,7 @@ import 'package:go_laundry/widgets/custom_button.dart';
 import 'package:go_laundry/widgets/custom_text_field.dart';
 import 'package:go_laundry/widgets/google_button.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:http/http.dart' as http;
 
 class RegisterScreen extends StatelessWidget {
   final Map<String, TextEditingController> controllers = {
@@ -21,10 +23,11 @@ class RegisterScreen extends StatelessWidget {
 
   RegisterScreen({super.key});
 
+  // Fungsi untuk mendaftar menggunakan Google
   Future<User?> signInWithGoogle() async {
     try {
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-      if (googleUser == null) return null; // Jika login dibatalkan.
+      if (googleUser == null) return null;
 
       final GoogleSignInAuthentication googleAuth =
           await googleUser.authentication;
@@ -40,6 +43,65 @@ class RegisterScreen extends StatelessWidget {
     } catch (e) {
       print("Error during Google Sign-In: $e");
       return null;
+    }
+  }
+
+  Future<void> registerUser(BuildContext context, String provider,
+      {String? email}) async {
+    try {
+      Map<String, dynamic> payload;
+
+      if (provider == 'google') {
+        // Jika mendaftar dengan Google, hanya kirim email dan provider
+        payload = {
+          "userEmail": email,
+          "provider": provider,
+        };
+      } else {
+        // Jika mendaftar dengan email, kirim semua data input pengguna
+        String userName = controllers['namaLengkap']!.text;
+        String userEmail = controllers['email']!.text;
+        String userPhone = controllers['noHandphone']!.text;
+        String userPassword = controllers['password']!.text;
+
+        payload = {
+          "userName": userName,
+          "userEmail": userEmail,
+          "userPhone": userPhone,
+          "userPassword": userPassword,
+          "provider": provider,
+        };
+      }
+
+      final response = await http.post(
+        Uri.parse(ApiConfig.registerEndpoint()),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: json.encode(payload),
+      );
+
+      if (response.statusCode == 201) {
+        final responseData = json.decode(response.body);
+        if (responseData['ok']) {
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => const HomeScreen()),
+          );
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(responseData['message'])),
+          );
+        }
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Gagal mendaftar. Coba lagi!')),
+        );
+      }
+    } catch (e) {
+      print(e);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Terjadi kesalahan: $e')),
+      );
     }
   }
 
@@ -118,8 +180,7 @@ class RegisterScreen extends StatelessWidget {
                   text: 'Daftar',
                   color: limeGreenColor,
                   onPressed: () {
-                    Navigator.of(context)
-                        .push(SlidePageRoute(page: const HomeScreen()));
+                    registerUser(context, 'email');
                   },
                 ),
                 const SizedBox(height: 24),
@@ -141,11 +202,11 @@ class RegisterScreen extends StatelessWidget {
                   onPressed: () async {
                     User? user = await signInWithGoogle();
                     if (user != null) {
-                      Navigator.of(context)
-                          .push(SlidePageRoute(page: const HomeScreen()));
+                      registerUser(context, 'google',
+                          email: user.email); // Menentukan provider ke 'google'
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
+                        const SnackBar(
                             content: Text('Gagal melakukan Google Sign-In')),
                       );
                     }
@@ -162,8 +223,8 @@ class RegisterScreen extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Navigator.of(context)
-                              .push(SlidePageRoute(page: LoginScreen()));
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => LoginScreen()));
                         },
                         child: Text(
                           'Masuk Sekarang',
