@@ -33,7 +33,7 @@ class SettingsScreenContent extends StatelessWidget {
               subtitle: 'Buat perubahan pada akun Anda',
               onTap: () {
                 Navigator.of(context)
-                    .push(SlidePageRoute(page: ChangeProfile()));
+                    .push(SlidePageRoute(page: ChangeProfileScreen()));
               },
             ),
             SettingsListItem(

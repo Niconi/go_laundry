@@ -36,7 +36,7 @@ class OrderDetailsCard extends StatelessWidget {
           Table(
             columnWidths: const {
               0: IntrinsicColumnWidth(),
-              1: FixedColumnWidth(15), // Width for ":"
+              1: FixedColumnWidth(15), 
               2: FlexColumnWidth(),
             },
             defaultVerticalAlignment: TableCellVerticalAlignment.top,

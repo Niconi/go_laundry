@@ -8,6 +8,8 @@ class CustomTextField extends StatelessWidget {
   final Icon? icon;
   final bool obscureText;
   final TextInputType inputType;
+  final bool enabled;
+  final int? maxLines;
 
   const CustomTextField({
     super.key,
@@ -17,6 +19,8 @@ class CustomTextField extends StatelessWidget {
     this.icon,
     this.obscureText = false,
     this.inputType = TextInputType.text,
+    this.enabled = true,
+    this.maxLines = 1,
   });
 
   @override
@@ -24,17 +28,28 @@ class CustomTextField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(title, style: regularText14),
+        Text(
+          title,
+          style: const TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
         const SizedBox(height: 2),
         TextField(
           controller: controller,
           obscureText: obscureText,
           keyboardType: inputType,
+          enabled: enabled,
+          maxLines: maxLines,
           decoration: InputDecoration(
             hintText: hintText,
-            hintStyle: regularText14.copyWith(color: silverGrayColor),
+            hintStyle: const TextStyle(
+              color: Colors.grey,
+              fontSize: 14,
+            ),
             filled: true,
-            fillColor: lightGrayColor,
+            fillColor: const Color(0xFFF5F5F5),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(4),
               borderSide: BorderSide.none,

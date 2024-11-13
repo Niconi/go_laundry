@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_laundry/router/slide_page_router.dart';
 import 'package:go_laundry/screen/auth/login_screen.dart';
@@ -6,6 +7,7 @@ import 'package:go_laundry/themes.dart';
 import 'package:go_laundry/widgets/custom_button.dart';
 import 'package:go_laundry/widgets/custom_text_field.dart';
 import 'package:go_laundry/widgets/google_button.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class RegisterScreen extends StatelessWidget {
   final Map<String, TextEditingController> controllers = {
@@ -18,6 +20,28 @@ class RegisterScreen extends StatelessWidget {
   };
 
   RegisterScreen({super.key});
+
+  Future<User?> signInWithGoogle() async {
+    try {
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      if (googleUser == null) return null; // Jika login dibatalkan.
+
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
+
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+
+      final UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithCredential(credential);
+      return userCredential.user;
+    } catch (e) {
+      print("Error during Google Sign-In: $e");
+      return null;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -114,7 +138,18 @@ class RegisterScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 24),
                 GoogleSignInButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    User? user = await signInWithGoogle();
+                    if (user != null) {
+                      Navigator.of(context)
+                          .push(SlidePageRoute(page: const HomeScreen()));
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                            content: Text('Gagal melakukan Google Sign-In')),
+                      );
+                    }
+                  },
                 ),
                 SizedBox(height: screenHeight * 0.05),
                 Center(

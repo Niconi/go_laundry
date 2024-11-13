@@ -22,7 +22,7 @@ class Checkout extends StatelessWidget {
           right: 16,
           left: 16,
           top: 10,
-          bottom: 20, // Add bottom padding
+          bottom: 20, 
         ),
         child: Column(
           children: [
@@ -48,10 +48,8 @@ class Checkout extends StatelessWidget {
             ),
             const SizedBox(height: 16),
 
-            // Spacer will push the button to the bottom
             const Spacer(),
 
-            // Payment Button at the bottom of the screen
             CustomButton(
               text: 'Payment',
               color: limeGreenColor,

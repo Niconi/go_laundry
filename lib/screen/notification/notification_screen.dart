@@ -13,7 +13,6 @@ class NotificationScreen extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            // Navigate to the next screen
           },
           child: const Text('Go to Notification Detail'),
         ),

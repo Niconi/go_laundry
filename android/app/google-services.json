@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "543151292438",
+    "project_id": "go-laundry-28f1c",
+    "storage_bucket": "go-laundry-28f1c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:543151292438:android:9010420a5a2bf39ec6b537",
+        "android_client_info": {
+          "package_name": "com.example.go_laundry"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "543151292438-652bosmlbrq1f3bsu5b1gjs2cg2d8nuk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.go_laundry",
+            "certificate_hash": "873138a8eb85b3ba6a01852a28dc1566fb606a99"
+          }
+        },
+        {
+          "client_id": "543151292438-3ofsle9ssebeugco1cnt8ji5555gi3lf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDScjFqY1CPv5kszlf2pG-zuIe981sN96Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "543151292438-3ofsle9ssebeugco1cnt8ji5555gi3lf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
