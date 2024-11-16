@@ -10,6 +10,7 @@ class CustomTextField extends StatelessWidget {
   final TextInputType inputType;
   final bool enabled;
   final int? maxLines;
+  final Color borderColor;
 
   const CustomTextField({
     super.key,
@@ -21,6 +22,7 @@ class CustomTextField extends StatelessWidget {
     this.inputType = TextInputType.text,
     this.enabled = true,
     this.maxLines = 1,
+    this.borderColor = Colors.grey,
   });
 
   @override
@@ -50,9 +52,22 @@ class CustomTextField extends StatelessWidget {
             ),
             filled: true,
             fillColor: const Color(0xFFF5F5F5),
-            border: OutlineInputBorder(
+            enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(4),
-              borderSide: BorderSide.none,
+              borderSide: BorderSide(color: borderColor),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(4),
+              borderSide:
+                  BorderSide(color: blackColor, width: 1.0), 
+            ),
+            errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(4),
+              borderSide: const BorderSide(color: redColor), 
+            ),
+            disabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(4),
+              borderSide: const BorderSide(color: grayColor), 
             ),
             prefixIcon: icon != null
                 ? Padding(

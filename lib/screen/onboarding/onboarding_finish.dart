@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_laundry/models/onboarding_finish_content.dart';
 import 'package:go_laundry/router/slide_page_router.dart';
-import 'package:go_laundry/screen/auth/login_screen.dart';
 import 'package:go_laundry/screen/auth/register_screen.dart';
 import 'package:go_laundry/themes.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../widgets/custom_button.dart';
 
 class OnboardingFinish extends StatefulWidget {
@@ -26,12 +26,16 @@ class _OnboardingFinishState extends State<OnboardingFinish> {
     },
   ];
 
-  void _nextPage() {
+  void _nextPage() async {
     if (_currentPage < onboardingData.length - 1) {
       _pageController.nextPage(
           duration: const Duration(milliseconds: 300), curve: Curves.ease);
     } else {
-      Navigator.of(context).push(SlidePageRoute(page: RegisterScreen()));
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setBool('onboarding_completed', true);
+
+      Navigator.of(context)
+          .pushReplacement(SlidePageRoute(page: RegisterScreen()));
     }
   }
 
@@ -71,8 +75,7 @@ class _OnboardingFinishState extends State<OnboardingFinish> {
                 ),
                 TextButton(
                   onPressed: () {
-                    Navigator.of(context)
-                        .push(SlidePageRoute(page: LoginScreen()));
+                    _nextPage();
                   },
                   child: Text(
                     'Masuk',

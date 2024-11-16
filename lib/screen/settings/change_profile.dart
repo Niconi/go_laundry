@@ -1,10 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:go_laundry/models/profile_model.dart';
 import 'package:go_laundry/themes.dart';
 import 'package:go_laundry/widgets/custom_button.dart';
 import 'package:go_laundry/widgets/custom_text_field.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 class ChangeProfileScreen extends StatefulWidget {
   const ChangeProfileScreen({Key? key}) : super(key: key);
@@ -54,9 +51,6 @@ class _ChangeProfileScreenState extends State<ChangeProfileScreen> {
     }
   }
 
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -96,7 +90,7 @@ class _ChangeProfileScreenState extends State<ChangeProfileScreen> {
         ],
       ),
       body: SingleChildScrollView(
-        physics: ScrollPhysics(
+        physics: const ScrollPhysics(
           parent: BouncingScrollPhysics(),
         ),
         child: Padding(

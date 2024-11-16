@@ -1,6 +1,10 @@
 class ApiConfig {
-  static const String baseUrl = "http://192.168.100.129:3000";
+  static const String baseUrl = "https://api0.apigolaundry.online";
 
   static String registerEndpoint() => "$baseUrl/register";
   static String loginEndpoint() => "$baseUrl/login";
+
+  static const Map<String, String> headers = {
+    "Content-Type": "application/json",
+  };
 }
