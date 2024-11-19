@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_laundry/models/receipt_model.dart';
+import 'package:go_laundry/themes.dart';
 import 'package:go_laundry/widgets/receipt_card.dart';
 
 class ReceiptScreen extends StatelessWidget {
@@ -19,7 +20,7 @@ class ReceiptScreen extends StatelessWidget {
         );
 
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: backgroundColor,
       body: Center(
         child: ReceiptCard(receipt: receiptData),
       ),

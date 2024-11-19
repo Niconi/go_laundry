@@ -20,7 +20,6 @@ class _InputPinState extends State<InputPin> {
       setState(() {
         _currentPin += number;
       });
-      // Check if PIN is complete
       if (_currentPin.length == _pinLength) {
         Navigator.push(
           context,
@@ -48,6 +47,7 @@ class _InputPinState extends State<InputPin> {
       appBar: AppBar(
         backgroundColor: backgroundColor,
         elevation: 0,
+        automaticallyImplyLeading: false,
       ),
       body: Center(
         child: Column(

@@ -65,7 +65,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   }
 
   Future<void> registerUser(BuildContext context, String provider,
-      {String? email}) async {
+      {String? email, String? name}) async {
     try {
       setState(() {
         isLoading = true;
@@ -77,6 +77,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         payload = {
           "userEmail": email,
           "provider": provider,
+          "userName": FirebaseAuth.instance.currentUser!.displayName
         };
       } else {
         String userName = controllers['namaLengkap']!.text;
@@ -311,7 +312,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       onPressed: () async {
                         User? user = await signInWithGoogle();
                         if (user != null) {
-                          registerUser(context, 'google', email: user.email);
+                          registerUser(context, 'google', email: user.email, 
+                          name: user.displayName);
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(

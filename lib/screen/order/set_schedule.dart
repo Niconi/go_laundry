@@ -74,7 +74,7 @@ class _SetScheduleState extends State<SetSchedule> {
                     hintText: 'Pilih Tanggal dan Waktu Penjemputan Laundry',
                     prefixIcon: const Icon(Icons.date_range),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(0),
                     ),
                   ),
                 ),

@@ -4,7 +4,6 @@ import 'package:go_laundry/content/order_screen_content.dart';
 import 'package:go_laundry/content/settings_screen_content.dart';
 import 'package:go_laundry/themes.dart';
 import 'package:go_laundry/widgets/bottom_nav_bar.dart';
-import 'package:go_laundry/screen/settings/settings_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

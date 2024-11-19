@@ -37,6 +37,19 @@ class HomeScreenContent extends StatelessWidget {
     );
   }
 
+  String getGreetingMessage() {
+    final hour = DateTime.now().hour;
+    if (hour >= 5 && hour < 12) {
+      return 'Selamat Pagi,';
+    } else if (hour >= 12 && hour < 15) {
+      return 'Selamat Siang,';
+    } else if (hour >= 15 && hour < 18) {
+      return 'Selamat Sore,';
+    } else {
+      return 'Selamat Malam,';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,7 +68,7 @@ class HomeScreenContent extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Selamat Pagi,',
+                      getGreetingMessage(),
                       style: semiBoldText14.copyWith(color: charcoalColor),
                     ),
                     Text(
