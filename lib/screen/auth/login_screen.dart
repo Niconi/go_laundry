@@ -12,6 +12,7 @@ import 'package:go_laundry/themes.dart';
 import 'package:go_laundry/widgets/custom_button.dart';
 import 'package:go_laundry/widgets/custom_text_field.dart';
 import 'package:go_laundry/widgets/google_button.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
@@ -104,22 +105,39 @@ class LoginScreen extends StatelessWidget {
         Uri.parse(ApiConfig.loginEndpoint()),
         headers: ApiConfig.headers,
         body: json.encode({
-          'userEmail': email,
-          'userPassword': password,
+          'user_email': email,
+          'user_password': password,
         }),
       );
 
       Navigator.of(context).pop();
 
       if (response.statusCode == 200) {
-        Navigator.of(context).pushAndRemoveUntil(
-          SlidePageRoute(page: const HomeScreen()),
-          (Route<dynamic> route) => false,
-        );
-      } else {
         final Map<String, dynamic> responseData = json.decode(response.body);
-        final String message = responseData['message'] ?? 'Terjadi kesalahan';
-        _showSnackBar(context, message);
+
+        if (responseData['success']) {
+          // Simpan data ke SharedPreferences
+          final SharedPreferences prefs = await SharedPreferences.getInstance();
+          final userData = responseData['data'];
+
+          await prefs.setString('user_ulid', userData['user_ulid']);
+          await prefs.setString('user_name', userData['user_name']);
+          await prefs.setString('user_email', userData['user_email']);
+          await prefs.setString('user_phone', userData['user_phone']);
+          await prefs.setString('balance', userData['balance']);
+          await prefs.setString('token', userData['token']);
+
+          // Navigasi ke halaman berikutnya
+          Navigator.of(context).pushAndRemoveUntil(
+            SlidePageRoute(page: const HomeScreen()),
+            (Route<dynamic> route) => false,
+          );
+        } else {
+          _showSnackBar(
+              context, responseData['message'] ?? 'Terjadi kesalahan');
+        }
+      } else {
+        _showSnackBar(context, 'Login gagal. Cek email dan password Anda.');
       }
     } catch (e) {
       Navigator.of(context).pop();

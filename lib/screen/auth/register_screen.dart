@@ -86,10 +86,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
         String userPassword = controllers['password']!.text;
 
         payload = {
-          "userName": userName,
-          "userEmail": userEmail,
-          "userPhone": userPhone,
-          "userPassword": userPassword,
+          "user_name": userName,
+          "user_email": userEmail,
+          "user_password": userPhone,
+          "user_phone": userPassword,
           "provider": provider,
         };
       }
@@ -312,8 +312,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       onPressed: () async {
                         User? user = await signInWithGoogle();
                         if (user != null) {
-                          registerUser(context, 'google', email: user.email, 
-                          name: user.displayName);
+                          registerUser(context, 'google',
+                              email: user.email, name: user.displayName);
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
